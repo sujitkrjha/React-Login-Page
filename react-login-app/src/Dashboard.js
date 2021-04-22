@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { getToken, removeUserSession, setUserSession } from './Utils/Common';
  
 function Dashboard(props) {
+  const [authLoading, setAuthLoading] = useState(true);
  
   // handle click event of logout button
-  const handleLogout = () => {    
+  const handleLogout = () => {
+    removeUserSession();
+    setAuthLoading(false);
     props.history.push('/login');
   }
  
